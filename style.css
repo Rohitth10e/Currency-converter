@@ -7,7 +7,7 @@ body{
     width: 350px;
     height: auto;
     padding: 10px 20px;
-    margin: 200px auto;
+    margin: 50px auto;
     border: 1px solid black;
     border-radius:10px;
     text-align: center;
@@ -37,9 +37,8 @@ input[type="text"]{
 
 .dropdown{
     display: flex;
+    align-items: center; 
     justify-content: space-between;
-    align-items: center;
-    gap: 20px;
 }
 
 img{

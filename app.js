@@ -1,4 +1,4 @@
-const BASE_URL = "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies";
+const BASE_URL = "https://cdnjs.cloudflare.com/ajax/libs/money.js/0.0.1/money.min.js";
 
 const dropdowns = document.querySelectorAll(".dropdown select");
 const btn = document.querySelector("form button");
@@ -24,16 +24,17 @@ for (let select of dropdowns) {
   });
 }
 
-const updateExchangeRate = async () => {
+const updateExchangeRate = async (evt) => {
   try {
+    evt.preventDefault();
     let amount = document.querySelector(".amount input");
     let amtVal = parseFloat(amount.value);
     if (isNaN(amtVal) || amtVal <= 0) {
       throw new Error("Invalid amount");
     }
 
-    const URL = `${BASE_URL}/${fromCurr.value.toLowerCase()}/${toCurr.value.toLowerCase()}.json`;
-    let response = await fetch(URL);
+    const URL = `${BASE_URL}/${fromCurr.value.toLowerCase()}/to/${toCurr.value.toLowerCase()}.json`;
+    let response = await fetch(URL,[]);
     if (!response.ok) {
       throw new Error(`Failed to fetch exchange rate (${response.status})`);
     }
